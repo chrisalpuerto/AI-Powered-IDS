@@ -1,4 +1,4 @@
-# gui/dashboard.py
+# dashboard
 
 import tkinter as tk
 from tkinter import ttk
