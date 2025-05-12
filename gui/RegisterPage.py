@@ -4,6 +4,7 @@
 
 
 from pathlib import Path
+from PIL import Image, ImageTk
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
@@ -56,13 +57,16 @@ def open_register_page():
         relief = "ridge"
     )
 
+    image_path1 = relative_to_assets("image_1.png")
+    og_image1 = Image.open(image_path1)
+    og_image1 = og_image1.resize((713, 446))
+    image_image1 = ImageTk.PhotoImage(og_image1)
+
     canvas.place(x = 0, y = 0)
-    image_image_1 = PhotoImage(
-        file=relative_to_assets("image_1.png"))
     image_1 = canvas.create_image(
         444.0,
         255.0,
-        image=image_image_1
+        image=image_image1
     )
 
     canvas.create_rectangle(
