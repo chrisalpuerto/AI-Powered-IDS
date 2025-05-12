@@ -6,8 +6,8 @@ from tkinter import messagebox
 
 users = {}
 
-from gui.gui import open_login_page
-from gui.gui2 import open_dashboard_page
+from gui.LoginPage import open_login_page
+from gui.Dashboard import open_dashboard_page
 
 class ImagePage(tk.Frame):
     def __init__(self, master, image_path, on_click=None):

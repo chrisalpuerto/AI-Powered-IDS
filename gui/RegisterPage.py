@@ -4,20 +4,36 @@
 
 
 from pathlib import Path
-from PIL import Image, ImageTk
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
-from gui.gui2 import open_dashboard_page
 
 
 
-def open_login_page():
+def open_register_page():
+    def check_register(data):
+        if data["username"] in data:
+            return False
+        else:
+            return True
+    def handle_register(data):
+        username = entry_3.get()
+        password = entry_2.get()
+        re_password = entry_1.get()
 
+        if check_register(data):
+            if password == re_password:
+                data[username] = password
+                print("Registration successful")
+                # Here you can add code to save the data to a file or database
+            else:
+                print("Passwords do not match")
+        else:
+            print("Username already exists")
 
     OUTPUT_PATH = Path(__file__).parent
-    ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/chrisalpuerto/Desktop/PROJECTS/AI Powered Intrution Detector CPSC 490 491/gui/assets/frame0")
+    ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame0Register").resolve()
 
 
     def relative_to_assets(path: str) -> Path:
@@ -25,7 +41,6 @@ def open_login_page():
 
 
     window = Tk()
-    status_label = None
 
     window.geometry("713x446")
     window.configure(bg = "#FFFFFF")
@@ -40,25 +55,14 @@ def open_login_page():
         highlightthickness = 0,
         relief = "ridge"
     )
-    status_label = canvas.create_text(
-    265.0,
-    300.0,
-    anchor="nw",
-    text="",
-    fill="green",  # Will use green for success, red for failure
-    font=("IstokWeb Regular", 14 * -1)
-    )
-
-    image_path1 = relative_to_assets("image_1.png")
-    og_image1 = Image.open(image_path1)
-    og_image1 = og_image1.resize((713, 446))
-    image_image1 = ImageTk.PhotoImage(og_image1)
 
     canvas.place(x = 0, y = 0)
+    image_image_1 = PhotoImage(
+        file=relative_to_assets("image_1.png"))
     image_1 = canvas.create_image(
-        713 / 2,
-        446 / 2,
-        image=image_image1
+        444.0,
+        255.0,
+        image=image_image_1
     )
 
     canvas.create_rectangle(
@@ -69,57 +73,20 @@ def open_login_page():
         fill="#B8D1E8",
         outline="")
 
-    button_image_1 = PhotoImage(
-        file=relative_to_assets("button_1.png"))
-    button_1 = Button(
-        image=button_image_1,
-        borderwidth=0,
-        highlightthickness=0,
-        command=lambda: print("button_1 clicked"),
-        relief="flat"
-    )
-    button_1.place(
-        x=251.0,
-        y=369.0,
-        width=202.0,
-        height=34.0
-    )
-
     canvas.create_text(
-        232.0,
-        318.0,
+        251.0,
+        251.0,
         anchor="nw",
-        text="Forgot Password? Click to reset",
+        text="Re-enter Password",
         fill="#000000",
         font=("IstokWeb Regular", 16 * -1)
-    )
-    login_info = {
-        "admin": "adminpassword23",
-        "user1": "user1password"
-    }
-    # using this file as a reference for login info
-
-    button_image_2 = PhotoImage(
-        file=relative_to_assets("button_2.png"))
-    button_2 = Button(
-        image=button_image_2,
-        borderwidth=0,
-        highlightthickness=0,
-        command=lambda: handle_login(),
-        relief="flat"
-    )
-    button_2.place(
-        x=251.0,
-        y=256.0,
-        width=202.0,
-        height=34.0
     )
 
     entry_image_1 = PhotoImage(
         file=relative_to_assets("entry_1.png"))
     entry_bg_1 = canvas.create_image(
         352.0,
-        219.0,
+        294.0,
         image=entry_image_1
     )
     entry_1 = Entry(
@@ -129,6 +96,58 @@ def open_login_page():
         highlightthickness=0
     )
     entry_1.place(
+        x=251.0,
+        y=277.0,
+        width=202.0,
+        height=32.0
+    )
+    from gui.LoginPage import open_login_page
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: (window.destroy(), open_login_page()),
+        relief="flat"
+    )
+    button_1.place(
+        x=251.0,
+        y=391.0,
+        width=202.0,
+        height=53.0
+    )
+
+    button_image_2 = PhotoImage(
+        file=relative_to_assets("button_2.png"))
+    button_2 = Button(
+        image=button_image_2,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_2 clicked"),
+        relief="flat"
+    )
+    button_2.place(
+        x=251.0,
+        y=334.0,
+        width=202.0,
+        height=34.0
+    )
+
+    entry_image_2 = PhotoImage(
+        file=relative_to_assets("entry_2.png"))
+    entry_bg_2 = canvas.create_image(
+        352.0,
+        219.0,
+        image=entry_image_2
+    )
+    entry_2 = Entry(
+        bd=0,
+        bg="#E5F5FF",
+        fg="#000716",
+        highlightthickness=0
+    )
+    entry_2.place(
         x=251.0,
         y=202.0,
         width=202.0,
@@ -144,20 +163,20 @@ def open_login_page():
         font=("IstokWeb Regular", 16 * -1)
     )
 
-    entry_image_2 = PhotoImage(
-        file=relative_to_assets("entry_2.png"))
-    entry_bg_2 = canvas.create_image(
+    entry_image_3 = PhotoImage(
+        file=relative_to_assets("entry_3.png"))
+    entry_bg_3 = canvas.create_image(
         352.0,
         155.0,
-        image=entry_image_2
+        image=entry_image_3
     )
-    entry_2 = Entry(
+    entry_3 = Entry(
         bd=0,
         bg="#E4F4FF",
         fg="#000716",
         highlightthickness=0
     )
-    entry_2.place(
+    entry_3.place(
         x=251.0,
         y=138.0,
         width=202.0,
@@ -174,40 +193,21 @@ def open_login_page():
     )
 
     canvas.create_text(
-        327.0,
+        312.0,
         53.0,
         anchor="nw",
-        text="Login",
+        text="Register",
         fill="#000000",
         font=("IstokWeb Regular", 24 * -1)
     )
 
     canvas.create_text(
-        265.0,
+        271.0,
         88.0,
         anchor="nw",
-        text="Sign In To Your Account",
+        text="Create A New Account",
         fill="#5A5050",
         font=("IstokWeb Regular", 16 * -1)
     )
-    def check_login(username, password):
-        if username in login_info and login_info[username] == password:
-            return True
-        else:
-            return False
-    def handle_login():
-        username = entry_2.get()
-        password = entry_1.get()
-        if check_login(username, password):
-            print("Login successful")
-            window.destroy()
-            open_dashboard_page()
-            #canvas.itemconfig(status_label, text="Login successful", fill="green")
-            return True
-        # Optionally route to dashboard here
-        else:
-            print("Invalid username or password")
-            #canvas.itemconfig(status_label, text="Invalid username or password", fill="red")
-
     window.resizable(False, False)
     window.mainloop()
