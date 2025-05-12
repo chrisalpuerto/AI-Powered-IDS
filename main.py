@@ -1,8 +1,8 @@
 # main entry point for app
 '''
 "admin": "adminpassword23",
-"user1": "user1password"
-
+"user1": "user1password",
+"user": "use"
 '''
 from gui.app import launch_app
 
