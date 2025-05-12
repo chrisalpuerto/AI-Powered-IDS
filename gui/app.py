@@ -6,19 +6,8 @@ from tkinter import messagebox
 
 users = {}
 
-def register_user(username, password):
-    if username in users:
-        print("Username already exists.")
-        return False
-    users[username] = password
-    print("User registered successfully.")
-
-def login_user(username, password):
-    if username not in users or users[username] != password:
-        print("Invalid username or password.")
-        return False
-    return True, "Login successful."
-
+from gui.gui import open_login_page
+from gui.gui2 import open_dashboard_page
 
 class ImagePage(tk.Frame):
     def __init__(self, master, image_path, on_click=None):
@@ -44,22 +33,8 @@ class ImagePage(tk.Frame):
 
         tk.Button(self, text="Login", command=self.handle_login).pack(pady=5)
         tk.Button(self, text="Register", command=self.handle_register).pack(pady=5)
-    def handle_login(self):
-            username = self.username_entry.get()
-            password = self.password_entry.get()
-            success, message = login_user(username, password)
-            messagebox.showinfo("Login", message)
-            if success and self.on_click:
-                self.on_click()  # Switch to dashboard
 
-    def handle_register(self):
-        username = self.username_entry.get()
-        password = self.password_entry.get()
-        success, message = register_user(username, password)
-        messagebox.showinfo("Register", message)
-
-
-def launch_app():
+def la():
     root = tk.Tk()
     root.geometry("900x600")
     root.title("AI IDS Prototype")
@@ -73,5 +48,6 @@ def launch_app():
 
     login = ImagePage(root, "gui/assets/LoginPage.png", on_click=show_dashboard)
     login.pack()
-
     root.mainloop()
+
+launch_app = open_login_page
