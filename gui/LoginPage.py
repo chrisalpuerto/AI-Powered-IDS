@@ -9,15 +9,17 @@ from PIL import Image, ImageTk
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import messagebox
 from gui.Dashboard import open_dashboard_page
 from gui.RegisterPage import open_register_page
+
 
 
 def open_login_page():
 
 
     OUTPUT_PATH = Path(__file__).parent
-    ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/chrisalpuerto/Desktop/PROJECTS/AI Powered Intrution Detector CPSC 490 491/gui/assets/frame0")
+    ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame0").resolve()
 
 
     def relative_to_assets(path: str) -> Path:
@@ -93,11 +95,8 @@ def open_login_page():
         fill="#000000",
         font=("IstokWeb Regular", 16 * -1)
     )
-    login_info = {
-        "admin": "adminpassword23",
-        "user1": "user1password",
-        "user": "use"
-    }
+    import gui.UserData as UserData
+    login_info = UserData.users
     # using this file as a reference for login info
 
     button_image_2 = PhotoImage(
@@ -201,13 +200,15 @@ def open_login_page():
         password = entry_1.get()
         if check_login(username, password):
             print("Login successful")
+            messagebox.showinfo("Login successful", "Login successful, Welcome!")
+            #canvas.itemconfig(status_label, text="Login successful", fill="green")
             window.destroy()
             open_dashboard_page(username)
-            #canvas.itemconfig(status_label, text="Login successful", fill="green")
             return True
         # Optionally route to dashboard here
         else:
             print("Invalid username or password")
+            messagebox.showerror("Login failed", "Invalid username or password")
             #canvas.itemconfig(status_label, text="Invalid username or password", fill="red")
 
     window.resizable(False, False)

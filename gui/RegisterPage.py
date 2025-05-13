@@ -11,28 +11,30 @@ from PIL import Image, ImageTk
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
-
+import gui.UserData as UserData
+from tkinter import messagebox
 def open_register_page():
-    def check_register(data):
-        if data["username"] in data:
-            return False
-        else:
-            return True
+    
+    def check_register(username):
+        return username not in UserData.users
     def handle_register(data):
-        username = entry_3.get()
-        password = entry_2.get()
-        re_password = entry_1.get()
+        username = entry_3.get().strip()
+        password = entry_2.get().strip()
+        re_password = entry_1.get().strip()
 
-        if check_register(data):
-            if password == re_password:
-                data[username] = password
-                print("Registration successful")
-                # Here you can add code to save the data to a file or database
-            else:
-                print("Passwords do not match")
-        else:
-            print("Username already exists")
-
+        if not username or not password or not re_password:
+            messagebox.showerror("Error", "Please fill in all Fields.")
+            return
+        if password != re_password:
+            messagebox.showerror("Error", "Passwords do not match.")
+            return
+        if not check_register(username):
+            messagebox.showerror("Error", "Username already exists.")
+            return
+        UserData.users[username] = password
+        messagebox.showinfo("Success", "Registration successful.")
+        window.destroy()
+        open_login_page()
     OUTPUT_PATH = Path(__file__).parent
     ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame0Register").resolve()
 
@@ -128,7 +130,7 @@ def open_register_page():
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_2 clicked"),
+        command=lambda: handle_register(UserData.users),
         relief="flat"
     )
     button_2.place(

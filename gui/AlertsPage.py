@@ -82,7 +82,7 @@ def open_alerts_page():
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: (window.destroy(), open_dashboard_page()),
+        command=lambda: (window.destroy(), open_dashboard_page(username="")),
         relief="flat"
     )
     button_2.place(

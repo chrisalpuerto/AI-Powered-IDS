@@ -10,11 +10,10 @@ from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame1").resolve()
+def open_log_history_page():
+    OUTPUT_PATH = Path(__file__).parent
+    ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame0LogHist").resolve()
 
-
-def open_dashboard_page(username):
 
     def relative_to_assets(path: str) -> Path:
         return ASSETS_PATH / Path(path)
@@ -35,7 +34,6 @@ def open_dashboard_page(username):
         highlightthickness = 0,
         relief = "ridge"
     )
-    
 
     canvas.place(x = 0, y = 0)
     image_image_1 = PhotoImage(
@@ -45,13 +43,6 @@ def open_dashboard_page(username):
         450.0,
         image=image_image_1
     )
-    canvas.create_text(
-    436.0,
-    270.0,
-    anchor="nw",
-    text=f"Welcome, {username.title()}!",
-    fill="#000000",
-    font=("IstokWeb Regular", 18 * -1))
 
     canvas.create_rectangle(
         138.0,
@@ -75,7 +66,7 @@ def open_dashboard_page(username):
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("Settings clicked"),
+        command=lambda: print("button_1 clicked"),
         relief="flat"
     )
     button_1.place(
@@ -91,7 +82,7 @@ def open_dashboard_page(username):
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("Dashboard button"),
+        command=lambda: print("button_2 clicked"),
         relief="flat"
     )
     button_2.place(
@@ -100,14 +91,14 @@ def open_dashboard_page(username):
         width=156.0,
         height=39.0
     )
-    from gui.AlertsPage import open_alerts_page
+
     button_image_3 = PhotoImage(
         file=relative_to_assets("button_3.png"))
     button_3 = Button(
         image=button_image_3,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: (window.destroy(), open_alerts_page()),
+        command=lambda: print("button_3 clicked"),
         relief="flat"
     )
     button_3.place(
@@ -116,14 +107,14 @@ def open_dashboard_page(username):
         width=156.0,
         height=39.0
     )
-    from gui.LogHistoryPage import open_log_history_page
+
     button_image_4 = PhotoImage(
         file=relative_to_assets("button_4.png"))
     button_4 = Button(
         image=button_image_4,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: (window.destroy(), open_log_history_page()),
+        command=lambda: print("button_4 clicked"),
         relief="flat"
     )
     button_4.place(
@@ -139,7 +130,7 @@ def open_dashboard_page(username):
         image=button_image_5,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("Ban list button clicked"),
+        command=lambda: print("button_5 clicked"),
         relief="flat"
     )
     button_5.place(
@@ -155,127 +146,47 @@ def open_dashboard_page(username):
         image=button_image_6,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("Log out clicked"),
+        command=lambda: print("button_6 clicked"),
         relief="flat"
     )
     button_6.place(
         x=173.0,
-        y=594.0,
+        y=595.0,
         width=156.0,
         height=39.0
-    )
-
-    canvas.create_rectangle(
-        960.0,
-        282.0,
-        1243.0,
-        465.0,
-        fill="#3467A9",
-        outline="")
-
-    canvas.create_text(
-        991.0,
-        298.0,
-        anchor="nw",
-        text="Quick Overview ",
-        fill="#FFFFFF",
-        font=("IstokWeb Regular", 20 * -1)
-    )
-
-    button_image_7 = PhotoImage(
-        file=relative_to_assets("button_7.png"))
-    button_7 = Button(
-        image=button_image_7,
-        borderwidth=0,
-        highlightthickness=0,
-        command=lambda: print("button_7 clicked"),
-        relief="flat"
-    )
-    button_7.place(
-        x=436.0,
-        y=313.0,
-        width=186.0,
-        height=35.0
-    )
-
-    canvas.create_text(
-        736.0,
-        144.0,
-        anchor="nw",
-        text="Dashboard",
-        fill="#000000",
-        font=("IstokWeb Regular", 38 * -1)
     )
 
     image_image_2 = PhotoImage(
         file=relative_to_assets("image_2.png"))
     image_2 = canvas.create_image(
-        686.0,
-        535.0,
+        835.0,
+        447.0,
         image=image_image_2
     )
 
     canvas.create_text(
-        991.0,
-        340.0,
+        470.0,
+        197.0,
         anchor="nw",
-        text="Total Devices:",
-        fill="#FFFFFF",
-        font=("IstokWeb Regular", 16 * -1)
+        text="Log History\n",
+        fill="#000000",
+        font=("IstokWeb Regular", 38 * -1)
     )
 
-    image_image_3 = PhotoImage(
-        file=relative_to_assets("image_3.png"))
-    image_3 = canvas.create_image(
-        1098.0,
-        574.0,
-        image=image_image_3
-    )
+    canvas.create_rectangle(
+        1269.0,
+        289.0,
+        1271.0,
+        611.0,
+        fill="#797979",
+        outline="")
 
-    canvas.create_text(
-        991.0,
-        380.0,
-        anchor="nw",
-        text="Last Scan:",
-        fill="#FFFFFF",
-        font=("IstokWeb Regular", 16 * -1)
-    )
-
-    canvas.create_text(
-        991.0,
-        419.0,
-        anchor="nw",
-        text="Unknown Devices:",
-        fill="#FFFFFF",
-        font=("IstokWeb Regular", 16 * -1)
-    )
-
-    canvas.create_text(
-        1194.0,
-        340.0,
-        anchor="nw",
-        text="4",
-        fill="#FFFFFF",
-        font=("IstokWeb Regular", 16 * -1)
-    )
-
-    canvas.create_text(
-        1173.0,
-        380.0,
-        anchor="nw",
-        text="6:45 AM",
-        fill="#FFFFFF",
-        font=("IstokWeb Regular", 16 * -1)
-    )
-
-    canvas.create_text(
-        1194.0,
-        419.0,
-        anchor="nw",
-        text="1",
-        fill="#FFFFFF",
-        font=("IstokWeb Regular", 16 * -1)
-    )
-    window.state('zoomed')
-    window.resizable(True, True)
+    canvas.create_rectangle(
+        1267.0,
+        280.0,
+        1273.0,
+        363.0,
+        fill="#F6F6F6",
+        outline="")
+    window.resizable(True,True)
     window.mainloop()
