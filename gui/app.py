@@ -8,6 +8,7 @@ users = {}
 
 from gui.LoginPage import open_login_page
 from gui.Dashboard import open_dashboard_page
+from gui.WelcomePage import open_welcome_page
 
 class ImagePage(tk.Frame):
     def __init__(self, master, image_path, on_click=None):
@@ -50,4 +51,4 @@ def la():
     login.pack()
     root.mainloop()
 
-launch_app = open_login_page
+launch_app = open_welcome_page()
