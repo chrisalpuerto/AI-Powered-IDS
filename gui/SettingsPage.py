@@ -10,302 +10,304 @@ from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame0SettingsPage").resolve()
+def open_settings_page():
+    OUTPUT_PATH = Path(__file__).parent
+    ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame0SettingsPage").resolve()
 
 
-def relative_to_assets(path: str) -> Path:
-    return ASSETS_PATH / Path(path)
+    def relative_to_assets(path: str) -> Path:
+        return ASSETS_PATH / Path(path)
 
 
-window = Tk()
+    window = Tk()
 
-window.geometry("1440x900")
-window.configure(bg = "#FFFFFF")
+    window.geometry("1440x900")
+    window.configure(bg = "#FFFFFF")
 
 
-canvas = Canvas(
-    window,
-    bg = "#FFFFFF",
-    height = 900,
-    width = 1440,
-    bd = 0,
-    highlightthickness = 0,
-    relief = "ridge"
-)
+    canvas = Canvas(
+        window,
+        bg = "#FFFFFF",
+        height = 900,
+        width = 1440,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+    )
 
-canvas.place(x = 0, y = 0)
-image_image_1 = PhotoImage(
-    file=relative_to_assets("image_1.png"))
-image_1 = canvas.create_image(
-    720.0,
-    450.0,
-    image=image_image_1
-)
+    canvas.place(x = 0, y = 0)
+    image_image_1 = PhotoImage(
+        file=relative_to_assets("image_1.png"))
+    image_1 = canvas.create_image(
+        720.0,
+        450.0,
+        image=image_image_1
+    )
 
-canvas.create_rectangle(
-    138.0,
-    137.0,
-    1301.0,
-    763.0,
-    fill="#B8D1E8",
-    outline="")
+    canvas.create_rectangle(
+        138.0,
+        137.0,
+        1301.0,
+        763.0,
+        fill="#B8D1E8",
+        outline="")
 
-canvas.create_rectangle(
-    138.0,
-    137.0,
-    363.0,
-    763.0,
-    fill="#737E8F",
-    outline="")
+    canvas.create_rectangle(
+        138.0,
+        137.0,
+        363.0,
+        763.0,
+        fill="#737E8F",
+        outline="")
 
-button_image_1 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
-button_1 = Button(
-    image=button_image_1,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
-    relief="flat"
-)
-button_1.place(
-    x=173.0,
-    y=516.0,
-    width=156.0,
-    height=39.0
-)
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_1 clicked"),
+        relief="flat"
+    )
+    button_1.place(
+        x=173.0,
+        y=516.0,
+        width=156.0,
+        height=39.0
+    )
 
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
-button_2 = Button(
-    image=button_image_2,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
-    relief="flat"
-)
-button_2.place(
-    x=173.0,
-    y=204.0,
-    width=156.0,
-    height=39.0
-)
+    button_image_2 = PhotoImage(
+        file=relative_to_assets("button_2.png"))
+    button_2 = Button(
+        image=button_image_2,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_2 clicked"),
+        relief="flat"
+    )
+    button_2.place(
+        x=173.0,
+        y=204.0,
+        width=156.0,
+        height=39.0
+    )
 
-button_image_3 = PhotoImage(
-    file=relative_to_assets("button_3.png"))
-button_3 = Button(
-    image=button_image_3,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_3 clicked"),
-    relief="flat"
-)
-button_3.place(
-    x=173.0,
-    y=282.0,
-    width=156.0,
-    height=39.0
-)
+    button_image_3 = PhotoImage(
+        file=relative_to_assets("button_3.png"))
+    button_3 = Button(
+        image=button_image_3,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_3 clicked"),
+        relief="flat"
+    )
+    button_3.place(
+        x=173.0,
+        y=282.0,
+        width=156.0,
+        height=39.0
+    )
 
-button_image_4 = PhotoImage(
-    file=relative_to_assets("button_4.png"))
-button_4 = Button(
-    image=button_image_4,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_4 clicked"),
-    relief="flat"
-)
-button_4.place(
-    x=173.0,
-    y=360.0,
-    width=156.0,
-    height=39.0
-)
+    button_image_4 = PhotoImage(
+        file=relative_to_assets("button_4.png"))
+    button_4 = Button(
+        image=button_image_4,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_4 clicked"),
+        relief="flat"
+    )
+    button_4.place(
+        x=173.0,
+        y=360.0,
+        width=156.0,
+        height=39.0
+    )
 
-button_image_5 = PhotoImage(
-    file=relative_to_assets("button_5.png"))
-button_5 = Button(
-    image=button_image_5,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_5 clicked"),
-    relief="flat"
-)
-button_5.place(
-    x=173.0,
-    y=438.0,
-    width=156.0,
-    height=39.0
-)
+    button_image_5 = PhotoImage(
+        file=relative_to_assets("button_5.png"))
+    button_5 = Button(
+        image=button_image_5,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_5 clicked"),
+        relief="flat"
+    )
+    button_5.place(
+        x=173.0,
+        y=438.0,
+        width=156.0,
+        height=39.0
+    )
+    from tkinter import messagebox
+    from gui.WelcomePage import open_welcome_page
+    button_image_6 = PhotoImage(
+        file=relative_to_assets("button_6.png"))
+    button_6 = Button(
+        image=button_image_6,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: (messagebox.showinfo("Logging Out", "Logging Out"), window.destroy(), open_welcome_page()),
+        relief="flat"
+    )
+    button_6.place(
+        x=173.0,
+        y=594.0,
+        width=156.0,
+        height=39.0
+    )
 
-button_image_6 = PhotoImage(
-    file=relative_to_assets("button_6.png"))
-button_6 = Button(
-    image=button_image_6,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_6 clicked"),
-    relief="flat"
-)
-button_6.place(
-    x=173.0,
-    y=594.0,
-    width=156.0,
-    height=39.0
-)
+    canvas.create_text(
+        445.0,
+        190.0,
+        anchor="nw",
+        text="Settings",
+        fill="#000000",
+        font=("IstokWeb Regular", 38 * -1)
+    )
 
-canvas.create_text(
-    445.0,
-    190.0,
-    anchor="nw",
-    text="Settings",
-    fill="#000000",
-    font=("IstokWeb Regular", 38 * -1)
-)
+    canvas.create_text(
+        445.0,
+        260.0,
+        anchor="nw",
+        text="Security & Access Control",
+        fill="#000000",
+        font=("IstokWeb Regular", 22 * -1)
+    )
 
-canvas.create_text(
-    445.0,
-    260.0,
-    anchor="nw",
-    text="Security & Access Control",
-    fill="#000000",
-    font=("IstokWeb Regular", 22 * -1)
-)
+    canvas.create_text(
+        445.0,
+        369.0,
+        anchor="nw",
+        text="Network Configuration",
+        fill="#000000",
+        font=("IstokWeb Regular", 22 * -1)
+    )
 
-canvas.create_text(
-    445.0,
-    369.0,
-    anchor="nw",
-    text="Network Configuration",
-    fill="#000000",
-    font=("IstokWeb Regular", 22 * -1)
-)
+    canvas.create_text(
+        445.0,
+        492.0,
+        anchor="nw",
+        text="Alert Settings",
+        fill="#000000",
+        font=("IstokWeb Regular", 22 * -1)
+    )
 
-canvas.create_text(
-    445.0,
-    492.0,
-    anchor="nw",
-    text="Alert Settings",
-    fill="#000000",
-    font=("IstokWeb Regular", 22 * -1)
-)
+    canvas.create_text(
+        445.0,
+        599.0,
+        anchor="nw",
+        text="Logging & Data",
+        fill="#000000",
+        font=("IstokWeb Regular", 22 * -1)
+    )
 
-canvas.create_text(
-    445.0,
-    599.0,
-    anchor="nw",
-    text="Logging & Data",
-    fill="#000000",
-    font=("IstokWeb Regular", 22 * -1)
-)
+    button_image_7 = PhotoImage(
+        file=relative_to_assets("button_7.png"))
+    button_7 = Button(
+        image=button_image_7,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_7 clicked"),
+        relief="flat"
+    )
+    button_7.place(
+        x=445.0,
+        y=303.0,
+        width=169.0,
+        height=30.0
+    )
 
-button_image_7 = PhotoImage(
-    file=relative_to_assets("button_7.png"))
-button_7 = Button(
-    image=button_image_7,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_7 clicked"),
-    relief="flat"
-)
-button_7.place(
-    x=445.0,
-    y=303.0,
-    width=169.0,
-    height=30.0
-)
+    image_image_2 = PhotoImage(
+        file=relative_to_assets("image_2.png"))
+    image_2 = canvas.create_image(
+        607.0,
+        538.0,
+        image=image_image_2
+    )
 
-image_image_2 = PhotoImage(
-    file=relative_to_assets("image_2.png"))
-image_2 = canvas.create_image(
-    607.0,
-    538.0,
-    image=image_image_2
-)
+    image_image_3 = PhotoImage(
+        file=relative_to_assets("image_3.png"))
+    image_3 = canvas.create_image(
+        607.0,
+        645.0,
+        image=image_image_3
+    )
 
-image_image_3 = PhotoImage(
-    file=relative_to_assets("image_3.png"))
-image_3 = canvas.create_image(
-    607.0,
-    645.0,
-    image=image_image_3
-)
+    canvas.create_text(
+        445.0,
+        530.0,
+        anchor="nw",
+        text="Enable Alerts",
+        fill="#000000",
+        font=("IstokWeb Regular", 14 * -1)
+    )
 
-canvas.create_text(
-    445.0,
-    530.0,
-    anchor="nw",
-    text="Enable Alerts",
-    fill="#000000",
-    font=("IstokWeb Regular", 14 * -1)
-)
+    canvas.create_text(
+        445.0,
+        637.0,
+        anchor="nw",
+        text="Enable Logging",
+        fill="#000000",
+        font=("IstokWeb Regular", 14 * -1)
+    )
 
-canvas.create_text(
-    445.0,
-    637.0,
-    anchor="nw",
-    text="Enable Logging",
-    fill="#000000",
-    font=("IstokWeb Regular", 14 * -1)
-)
+    canvas.create_text(
+        444.0,
+        412.0,
+        anchor="nw",
+        text="Network Interface",
+        fill="#000000",
+        font=("IstokWeb Regular", 14 * -1)
+    )
 
-canvas.create_text(
-    444.0,
-    412.0,
-    anchor="nw",
-    text="Network Interface",
-    fill="#000000",
-    font=("IstokWeb Regular", 14 * -1)
-)
+    canvas.create_text(
+        444.0,
+        446.0,
+        anchor="nw",
+        text="Subnet Mask",
+        fill="#000000",
+        font=("IstokWeb Regular", 14 * -1)
+    )
 
-canvas.create_text(
-    444.0,
-    446.0,
-    anchor="nw",
-    text="Subnet Mask",
-    fill="#000000",
-    font=("IstokWeb Regular", 14 * -1)
-)
+    entry_image_1 = PhotoImage(
+        file=relative_to_assets("entry_1.png"))
+    entry_bg_1 = canvas.create_image(
+        642.0,
+        422.0,
+        image=entry_image_1
+    )
+    entry_1 = Entry(
+        bd=0,
+        bg="#E7E7E7",
+        fg="#000716",
+        highlightthickness=0
+    )
+    entry_1.place(
+        x=590.0,
+        y=413.0,
+        width=104.0,
+        height=16.0
+    )
 
-entry_image_1 = PhotoImage(
-    file=relative_to_assets("entry_1.png"))
-entry_bg_1 = canvas.create_image(
-    642.0,
-    422.0,
-    image=entry_image_1
-)
-entry_1 = Entry(
-    bd=0,
-    bg="#E7E7E7",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_1.place(
-    x=590.0,
-    y=413.0,
-    width=104.0,
-    height=16.0
-)
-
-entry_image_2 = PhotoImage(
-    file=relative_to_assets("entry_2.png"))
-entry_bg_2 = canvas.create_image(
-    642.0,
-    456.0,
-    image=entry_image_2
-)
-entry_2 = Entry(
-    bd=0,
-    bg="#E7E7E7",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_2.place(
-    x=590.0,
-    y=447.0,
-    width=104.0,
-    height=16.0
-)
-window.resizable(True, True)
-window.mainloop()
+    entry_image_2 = PhotoImage(
+        file=relative_to_assets("entry_2.png"))
+    entry_bg_2 = canvas.create_image(
+        642.0,
+        456.0,
+        image=entry_image_2
+    )
+    entry_2 = Entry(
+        bd=0,
+        bg="#E7E7E7",
+        fg="#000716",
+        highlightthickness=0
+    )
+    entry_2.place(
+        x=590.0,
+        y=447.0,
+        width=104.0,
+        height=16.0
+    )
+    window.resizable(True, True)
+    window.mainloop()

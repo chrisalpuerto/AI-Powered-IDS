@@ -9,167 +9,167 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
-
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame0BanList").resolve()
-
-
-def relative_to_assets(path: str) -> Path:
-    return ASSETS_PATH / Path(path)
+def open_ban_list_page():
+    OUTPUT_PATH = Path(__file__).parent
+    ASSETS_PATH = OUTPUT_PATH / Path(r"gui/assets/frame0BanList").resolve()
 
 
-window = Tk()
-
-window.geometry("1440x900")
-window.configure(bg = "#FFFFFF")
+    def relative_to_assets(path: str) -> Path:
+        return ASSETS_PATH / Path(path)
 
 
-canvas = Canvas(
-    window,
-    bg = "#FFFFFF",
-    height = 900,
-    width = 1440,
-    bd = 0,
-    highlightthickness = 0,
-    relief = "ridge"
-)
+    window = Tk()
 
-canvas.place(x = 0, y = 0)
-image_image_1 = PhotoImage(
-    file=relative_to_assets("image_1.png"))
-image_1 = canvas.create_image(
-    720.0,
-    450.0,
-    image=image_image_1
-)
+    window.geometry("1440x900")
+    window.configure(bg = "#FFFFFF")
 
-canvas.create_rectangle(
-    138.0,
-    137.0,
-    1301.0,
-    763.0,
-    fill="#B8D1E8",
-    outline="")
 
-canvas.create_rectangle(
-    138.0,
-    137.0,
-    363.0,
-    763.0,
-    fill="#737E8F",
-    outline="")
+    canvas = Canvas(
+        window,
+        bg = "#FFFFFF",
+        height = 900,
+        width = 1440,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+    )
 
-button_image_1 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
-button_1 = Button(
-    image=button_image_1,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("Settings clicked"),
-    relief="flat"
-)
-button_1.place(
-    x=173.0,
-    y=516.0,
-    width=156.0,
-    height=39.0
-)
+    canvas.place(x = 0, y = 0)
+    image_image_1 = PhotoImage(
+        file=relative_to_assets("image_1.png"))
+    image_1 = canvas.create_image(
+        720.0,
+        450.0,
+        image=image_image_1
+    )
 
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
-button_2 = Button(
-    image=button_image_2,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("Dashboard clicked"),
-    relief="flat"
-)
-button_2.place(
-    x=173.0,
-    y=204.0,
-    width=156.0,
-    height=39.0
-)
+    canvas.create_rectangle(
+        138.0,
+        137.0,
+        1301.0,
+        763.0,
+        fill="#B8D1E8",
+        outline="")
 
-button_image_3 = PhotoImage(
-    file=relative_to_assets("button_3.png"))
-button_3 = Button(
-    image=button_image_3,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("Alerts clicked"),
-    relief="flat"
-)
-button_3.place(
-    x=173.0,
-    y=282.0,
-    width=156.0,
-    height=39.0
-)
+    canvas.create_rectangle(
+        138.0,
+        137.0,
+        363.0,
+        763.0,
+        fill="#737E8F",
+        outline="")
+    from gui.SettingsPage import open_settings_page
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: (window.destroy(), open_settings_page()),
+        relief="flat"
+    )
+    button_1.place(
+        x=173.0,
+        y=516.0,
+        width=156.0,
+        height=39.0
+    )
 
-button_image_4 = PhotoImage(
-    file=relative_to_assets("button_4.png"))
-button_4 = Button(
-    image=button_image_4,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("Login History clicked"),
-    relief="flat"
-)
-button_4.place(
-    x=173.0,
-    y=360.0,
-    width=156.0,
-    height=39.0
-)
+    button_image_2 = PhotoImage(
+        file=relative_to_assets("button_2.png"))
+    button_2 = Button(
+        image=button_image_2,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("Dashboard clicked"),
+        relief="flat"
+    )
+    button_2.place(
+        x=173.0,
+        y=204.0,
+        width=156.0,
+        height=39.0
+    )
 
-button_image_5 = PhotoImage(
-    file=relative_to_assets("button_5.png"))
-button_5 = Button(
-    image=button_image_5,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("Ban list clicked"),
-    relief="flat"
-)
-button_5.place(
-    x=173.0,
-    y=438.0,
-    width=156.0,
-    height=39.0
-)
+    button_image_3 = PhotoImage(
+        file=relative_to_assets("button_3.png"))
+    button_3 = Button(
+        image=button_image_3,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("Alerts clicked"),
+        relief="flat"
+    )
+    button_3.place(
+        x=173.0,
+        y=282.0,
+        width=156.0,
+        height=39.0
+    )
 
-button_image_6 = PhotoImage(
-    file=relative_to_assets("button_6.png"))
-button_6 = Button(
-    image=button_image_6,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("Log Out"),
-    relief="flat"
-)
-button_6.place(
-    x=173.0,
-    y=594.0,
-    width=156.0,
-    height=39.0
-)
+    button_image_4 = PhotoImage(
+        file=relative_to_assets("button_4.png"))
+    button_4 = Button(
+        image=button_image_4,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("Login History clicked"),
+        relief="flat"
+    )
+    button_4.place(
+        x=173.0,
+        y=360.0,
+        width=156.0,
+        height=39.0
+    )
 
-canvas.create_text(
-    460.0,
-    197.0,
-    anchor="nw",
-    text="Ban List",
-    fill="#000000",
-    font=("IstokWeb Regular", 38 * -1)
-)
+    button_image_5 = PhotoImage(
+        file=relative_to_assets("button_5.png"))
+    button_5 = Button(
+        image=button_image_5,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("Ban list clicked"),
+        relief="flat"
+    )
+    button_5.place(
+        x=173.0,
+        y=438.0,
+        width=156.0,
+        height=39.0
+    )
 
-image_image_2 = PhotoImage(
-    file=relative_to_assets("image_2.png"))
-image_2 = canvas.create_image(
-    853.0,
-    450.0,
-    image=image_image_2
-)
-window.resizable(True, True)
-window.mainloop()
+    button_image_6 = PhotoImage(
+        file=relative_to_assets("button_6.png"))
+    button_6 = Button(
+        image=button_image_6,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("Log Out"),
+        relief="flat"
+    )
+    button_6.place(
+        x=173.0,
+        y=594.0,
+        width=156.0,
+        height=39.0
+    )
+
+    canvas.create_text(
+        460.0,
+        197.0,
+        anchor="nw",
+        text="Ban List",
+        fill="#000000",
+        font=("IstokWeb Regular", 38 * -1)
+    )
+
+    image_image_2 = PhotoImage(
+        file=relative_to_assets("image_2.png"))
+    image_2 = canvas.create_image(
+        853.0,
+        450.0,
+        image=image_image_2
+    )
+    window.resizable(True, True)
+    window.mainloop()

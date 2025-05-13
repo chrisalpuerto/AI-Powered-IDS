@@ -107,14 +107,15 @@ def open_alerts_page():
         width=156.0,
         height=39.0
     )
-
+    # from gui.LogHistoryPage import open_log_history_page
+    from gui.LogHistoryPage import open_log_history_page
     button_image_4 = PhotoImage(
         file=relative_to_assets("button_4.png"))
     button_4 = Button(
         image=button_image_4,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_4 clicked"),
+        command=lambda: (window.destroy(), open_log_history_page()),
         relief="flat"
     )
     button_4.place(

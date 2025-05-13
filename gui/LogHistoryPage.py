@@ -107,14 +107,13 @@ def open_log_history_page():
         width=156.0,
         height=39.0
     )
-
     button_image_4 = PhotoImage(
         file=relative_to_assets("button_4.png"))
     button_4 = Button(
         image=button_image_4,
         borderwidth=0,
-        highlightthickness=0,
-        command=lambda: print("button_4 clicked"),
+        highlightthickness=0, # log history page
+        command=lambda: print("button_4"),
         relief="flat"
     )
     button_4.place(
@@ -123,14 +122,15 @@ def open_log_history_page():
         width=156.0,
         height=39.0
     )
-
+    # ban list 
+    from gui.BanListPage import open_ban_list_page
     button_image_5 = PhotoImage(
         file=relative_to_assets("button_5.png"))
     button_5 = Button(
         image=button_image_5,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_5 clicked"),
+        command=lambda: (window.destroy(), open_ban_list_page()),
         relief="flat"
     )
     button_5.place(
