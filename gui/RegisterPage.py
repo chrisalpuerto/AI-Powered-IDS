@@ -66,8 +66,8 @@ def open_register_page():
 
     canvas.place(x = 0, y = 0)
     image_1 = canvas.create_image(
-        444.0,
-        255.0,
+        713 / 2,
+        446 / 2,
         image=image_image1
     )
 

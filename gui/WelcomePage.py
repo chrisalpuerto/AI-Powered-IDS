@@ -67,14 +67,14 @@ def open_welcome_page():
         width=202.0,
         height=34.0
     )
-
+    from gui.RegisterPage import open_register_page
     button_image_2 = PhotoImage(
         file=relative_to_assets("button_2.png"))
     button_2 = Button(
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_2 clicked"),
+        command=lambda: (window.destroy(), open_register_page()),
         relief="flat"
     )
     button_2.place(
